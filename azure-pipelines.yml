@@ -85,7 +85,12 @@ stages:
         appType: 'webApp'
         WebAppName: 'aspdevopsweb10000'
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        ConfigurationSettings: |
+    - task: AzureAppServiceSettings@1
+      inputs:
+        azureSubscription: 'labAzureSubscription'
+        appName: 'aspdevopsweb10000'
+        resourceGroupName: 'DemoRG'
+        connectionStrings: |
           [
              {
               "name": "MyDbConnection",
